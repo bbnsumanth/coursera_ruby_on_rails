@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ruby on Rails - COURSERA</title>
+	<style type="text/css">
+     div {
+     	background-color: #d0e4fe;
+     }
+	</style>
+</head>
+<body>
+ 
+ <div id = "lec 4" style="background-color:orange;">
+ <h2>
+ 	Lec 4
+ </h2>
+ <ul>
+  <li>
+   	$rails new app_name => this will create a new rails app with the name app_name
+   </li>
+   <li>
+   	$cd app_name
+   	$rails server(or rails s) => this will start the rails app on localhost:3000,rails comes with inbuilt server to be used in development mode
+   </li>
+   <li>
+   	all the static files goes into public directory in rails app.these are directly served by rails server without using any controllers.we can access the files in public directory by directly giving the file name(localhost:3000/filename)
+   </li> 	
+ </ul>	
+ </div>
+
+ <div id="lec 5">
+ 	<h2>Lec 5</h2>
+ 	<ul>
+ 	<li>
+ 		$ rails generate controller controllerName action1 action2 => this will generate  a new controller class with the name controllerName_controller.rb and all the other related stuff like  routes for the actions in controller ,views for the actions with name actionName.html.erb , javascript(coffeescript),css(scss) tests etc.
+ 		Instead of generate we can use a shortcut g. 
+ 	</li>
+ 	<li>
+ 		notice .erb extension to files in view.Erb is a templating library which lets us write ruby in .html file.this allows us to embed dynamic content into our static html code. 
+ 	<ul>
+ 		<li>tag patterns in erb
+	 	<ol>
+	 	    <li><% ...ruby code... %> this tag pattern evaluate the ruby code inside it </li>
+	 		<li><%= ...ruby code... %> this will return the evaluated result from ruby code</li>
+	 	</ol>
+ 	</li>
+ 	<li>
+ 		eg:<ul>
+ 			<li><% random_names =  ["Alex","Joe","Micheal"]%></li>
+ 		<li> Greeting, <%= random_names.sample %> </li> 
+ 		</ul>
+ 	</li>
+ 	</ul>
+ 	</li>
+ 	
+ </ul>
+ </div>
+
+ <div id = "lec 6" style="background-color:orange;">
+ <h2> Lec 6 </h2>
+ <ul>
+ 	<li>if there are no static files for a request rails will look in routes for a controller which is matching the request
+ 	</li>
+ 	<li>following is the lifecycle from Request => Response
+	 	<ul>
+	 		<li>routes forward the request to controller =></li>
+	 		<li>controller then talks to models,gets data etc => </li>
+	 		<li>controller then fills the view wuith data =></li>
+	 		<li>return the view as a response</li>
+	 	</ul> 
+ 	</li>
+ 	<li>
+ 		rake is the build system of ruby,it is written in ruby,rake --tasks shows all the possible commands of rake,rake --describe taskname will describe the rake task 
+ 	</li>
+ </ul>	
+ </div>
+
+ <div id = "lec 7">
+    
+    <h2>Lec 7 - controllers </h2>
+    <ul>
+    	<li>our business logic should be moved out of view,it must be in controller or models</li>
+    	<li>instance variables in controlers are available to .erb files in views</li>
+    	<li>a new instance of controller is created for every requests,so we can not hold state in controllers btw requests.</li>
+    	<li>state should be stored in either sessions or databases.what abt model ???</li>
+    </ul>
+  </div>
+
+   <div id = "lec 8" style="background-color:orange;" >
+    
+    <h2>Lec 8 - Helpers </h2>
+    <ul>
+    <li>Helpers contain code that is used to format views</li>
+    <li>code in a helper for a controller can be accessed from any view that belongs to any controller</li>
+    <li>rails comes with many build in helpers like link_to </li>
+    	
+    </ul>
+  </div>
+
+  <div id = "lec 9">
+    
+    <h2>Lec 9 - gems(httparty) </h2>
+    <ul>
+    	<li>RubyGems is a package manger for ruby </li>
+    	<li>httparty is a gem to consume restful web services</li>
+    	<li>Restfull services are simple webservices implemented using http:
+          <ul>
+          	<li>have a base uri</li>
+          	<li>data exchange is using xml / json</li>
+          	<li>support http methods like get,post etc</li>
+          </ul>
+    	</li>
+    	<li>httparty makes our app as a client to some web service</li>
+    	<li>it automaticallyparse json or xml into ruby data structures.</li>
+    	<li>params are specified in request using ? .Two params are seperated by & </li>
+    </ul>
+  </div>
+
+  <div id = "lec 10" style="background-color:orange;" >
+    
+    <h2>Lec 10 - Bundler </h2>
+    <ul>
+    <li>bundler lets specify gems(and associated gem dependencies) for rails app in side Gemfile</li>
+    <li>It is the preferred way to manage dependencies in rails app</li>
+    <li>running bundle install or bundle will fetch all the dependencies mentioned in Gemfile</li>
+    <li> running bunble update will update the version of a gem</li>
+    <li> eg:
+	    <ol>
+	    	<li>gem "nokogiri"</li>
+		    <li>gem "nokogiri" , "3.0.0.beta3"</li>	
+		    <li>gem "rack" ,">=1.0"</li>
+		    <li>gem "thin", ">=1.1 , "< 2.0" </li>
+		    <li> gem "thin" , "~>1.1"</li>
+	    </ol>
+    </li>
+    <li>Gemfile.lock is the file which contain exact versions of our gems</li>
+    	
+    </ul>
+  </div>
+
+    <div id = "lec 11">
+    
+    <h2>Lec 11 Models </h2>
+    <ul>
+    	<li>to include a gem in ur app,add the gem to gemfile,stop the server,den run bundle in root directory so that bunbler will fetch the gem if it is not avaialble locally,den restart the server
+    	</li>
+    	<li>all logic that i srelated to getting data goes into model</li>
+    	<li>eg:using httparty we can get data from an api in a model<,this is accessible by a controller,then views use this data from controller to render it /li>
+    </ul>
+  </div>
+
+  <div id = "lec 12" style="background-color:orange;" >
+    
+    <h2>Lec 12 - Styling views,query params </h2>
+    <ul>
+    <li>we can define styles in the assets/controller.scss file for a controller,these are automatically applied to all the views for that controller</li>
+    <li>in the actions in a controller we can access the params using params[:param_name]</li>
+    <li> we can make a controller to serve on root path by using root 'controller#action' in routes.rb file </li>
+    </ul>
+  </div>
+
+</body>
+</html>
